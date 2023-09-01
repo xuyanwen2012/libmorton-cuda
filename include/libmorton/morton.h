@@ -117,20 +117,26 @@ inline void morton3D_64_decode(const uint_fast64_t morton, uint_fast32_t& x,
   m3D_d_BITALG<uint_fast64_t, uint_fast32_t>(morton, x, y, z);
 }
 #else
-inline void morton2D_32_decode(const uint_fast32_t morton, uint_fast16_t& x,
-                               uint_fast16_t& y) {
+__device__ __host__ inline void morton2D_32_decode(const uint_fast32_t morton,
+                                                   uint_fast16_t& x,
+                                                   uint_fast16_t& y) {
   m2D_d_magicbits_combined(morton, x, y);
 }
-inline void morton2D_64_decode(const uint_fast64_t morton, uint_fast32_t& x,
-                               uint_fast32_t& y) {
+__device__ __host__ inline void morton2D_64_decode(const uint_fast64_t morton,
+                                                   uint_fast32_t& x,
+                                                   uint_fast32_t& y) {
   m2D_d_sLUT<uint_fast64_t, uint_fast32_t>(morton, x, y);
 }
-inline void morton3D_32_decode(const uint_fast32_t morton, uint_fast16_t& x,
-                               uint_fast16_t& y, uint_fast16_t& z) {
+__device__ __host__ inline void morton3D_32_decode(const uint_fast32_t morton,
+                                                   uint_fast16_t& x,
+                                                   uint_fast16_t& y,
+                                                   uint_fast16_t& z) {
   m3D_d_sLUT<uint_fast32_t, uint_fast16_t>(morton, x, y, z);
 }
-inline void morton3D_64_decode(const uint_fast64_t morton, uint_fast32_t& x,
-                               uint_fast32_t& y, uint_fast32_t& z) {
+__device__ __host__ inline void morton3D_64_decode(const uint_fast64_t morton,
+                                                   uint_fast32_t& x,
+                                                   uint_fast32_t& y,
+                                                   uint_fast32_t& z) {
   m3D_d_sLUT<uint_fast64_t, uint_fast32_t>(morton, x, y, z);
 }
 #endif
